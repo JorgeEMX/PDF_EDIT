@@ -13,6 +13,20 @@ ADVERTENCIA
 Ya que se hace uso de la funcionalidad de TCPDF Parser, los archivos que se podrán leer serán aquellos con
 las características que soporte TCPDF Parser.
 
+USO
+========
+
+// Instancia de PDF_EDIT para modificar el archivo
+
+.....
+	
+// Se reemplaza el texto TCPDF por PDF_EDIT
+
+$parser->ReplaceText('TCPDF', 'PDF_EDIT');
+	
+// Se obtiene el archivo editado
+
+$new_pdf = $parser->Output();
 
 REFERENCIA OBLIGADA
 ========
