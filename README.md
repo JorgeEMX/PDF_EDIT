@@ -1,4 +1,4 @@
-PHP_EDIT
+PDF_EDIT
 ========
 
 Clase PHP que permite reemplazar texto en archivos PDF
