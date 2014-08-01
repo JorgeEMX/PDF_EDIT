@@ -57,6 +57,12 @@ class PDF_EDIT extends TCPDF_PARSER
 		$this->xref_definition		= $this->GetXrefDataDefinition();
 	}
 	
+	/*
+	 * Actualiza propiedades de la clase TCPDF
+	 *
+	 * Permite tener actualizada las propiedades xref, pdfdata y objects
+	 * que usa TCPDF_PARSER para hacer multiples llamadas a ReplaceText
+	 */
 	private function ReloadTcpdfData()
 	{
 		$trimpos = strpos($this->string_pdf, '%PDF-');
