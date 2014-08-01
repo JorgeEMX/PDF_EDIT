@@ -8,6 +8,9 @@
 	
 	// Se reemplaza el texto TCPDF por PDF_EDIT
 	$parser->ReplaceText('TCPDF', 'PDF_EDIT');
+    
+    // Se reemplaza library por class
+    $parser->ReplaceText('library', 'class');
 	
 	// Se obtiene el archivo editado
 	$new_pdf = $parser->Output();

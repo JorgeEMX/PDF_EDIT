@@ -56,6 +56,23 @@ class PDF_EDIT extends TCPDF_PARSER
 		$this->objects_content		= $this->GetObjects();
 		$this->xref_definition		= $this->GetXrefDataDefinition();
 	}
+	
+	private function ReloadTcpdfData()
+	{
+		$trimpos = strpos($this->string_pdf, '%PDF-');
+		$this->pdfdata = substr($this->string_pdf, $trimpos);
+		$pdflen = strlen($this->string_pdf);
+		$this->setConfig(array());
+		$this->xref = $this->getXrefData();
+
+		// parse all document objects
+		$this->objects = array();
+		foreach ($this->xref['xref'] as $obj => $offset) {
+			if (!isset($this->objects[$obj]) AND ($offset > 0)) {
+				$this->objects[$obj] = $this->getIndirectObject($obj, $offset, true);
+			}
+		}
+	}
 
 	/**
 	 * Genera el string del archivo pdf
@@ -82,6 +99,7 @@ class PDF_EDIT extends TCPDF_PARSER
 
 		$this->xref_definition['startxref'] = preg_replace('/\d+/i', $star_xref_offset, $this->xref_definition['startxref']);
 		$this->string_pdf.= $this->xref_definition['startxref'];
+		$this->ReloadTcpdfData();
 	}
 
     /**
