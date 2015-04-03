@@ -12,6 +12,9 @@
     // Se reemplaza library por class
     $parser->ReplaceText('library', 'class');
 	
+    // Prueba de bug, texto con signos (se reemplaza text por /text) #2
+    $parser->ReplaceText('text', '/[text]');
+    
 	// Se obtiene el archivo editado
 	$new_pdf = $parser->Output();
 	
