@@ -12,7 +12,7 @@
     // Se reemplaza library por class
     $parser->ReplaceText('library', 'class');
 	
-    // Prueba de bug, texto con signos (se reemplaza text por /text) #2
+    // Prueba de bug, texto con signos (se reemplaza text por /text)
     $parser->ReplaceText('text', '/[text]');
     
 	// Se obtiene el archivo editado
